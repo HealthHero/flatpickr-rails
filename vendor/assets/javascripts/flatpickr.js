@@ -586,7 +586,7 @@
                 build();
             bindEvents();
             if (self.selectedDates.length || self.config.noCalendar) {
-                if (self.config.enableTime) {
+                if (self.config && self.config.enableTime) {
                     setHoursFromDate(self.config.noCalendar
                         ? self.latestSelectedDateObj || self.config.minDate
                         : undefined);
