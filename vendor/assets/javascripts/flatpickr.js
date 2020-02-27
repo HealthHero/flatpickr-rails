@@ -950,7 +950,7 @@
                 self.innerContainer.appendChild(self.rContainer);
                 fragment.appendChild(self.innerContainer);
             }
-            if (self.config.enableTime) {
+            if (self.config && self.config.enableTime) {
                 fragment.appendChild(buildTime());
             }
             toggleClass(self.calendarContainer, "rangeMode", self.config.mode === "range");
@@ -1323,7 +1323,7 @@
                 self.currentMonth = self._initialDate.getMonth();
             }
             self.showTimeInput = false;
-            if (self.config.enableTime === true) {
+            if (self.config && self.config.enableTime === true) {
                 setDefaultHours();
             }
             self.redraw();
@@ -1609,7 +1609,7 @@
                             else if (!isTimeObj)
                                 focusOnDay(undefined, delta * 7);
                         }
-                        else if (self.config.enableTime) {
+                        else if (self.config && self.config.enableTime) {
                             if (!isTimeObj && self.hourElement)
                                 self.hourElement.focus();
                             updateTime(e);
@@ -1761,7 +1761,7 @@
                 triggerEvent("onOpen");
                 positionCalendar(positionElement);
             }
-            if (self.config.enableTime === true && self.config.noCalendar === true) {
+            if (self.config && self.config.enableTime === true && self.config.noCalendar === true) {
                 if (self.selectedDates.length === 0) {
                     setDefaultTime();
                 }
@@ -2038,7 +2038,7 @@
             updateNavigationCurrentMonth();
             buildDays();
             updateValue();
-            if (self.config.enableTime)
+            if (self.config && self.config.enableTime)
                 setTimeout(function () { return (self.showTimeInput = true); }, 50);
             // maintain focus
             if (!shouldChangeMonth &&
